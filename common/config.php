@@ -2,8 +2,8 @@
 $install = 'zainstalowana';
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', '1079133');
+define('DB_PASS', 'wojemyrtany');
 define('DB_SCHEMA', '1079133'); 
 
 if (!$GLOBALS['db'] =  mysqli_connect(DB_HOST, DB_USER, DB_PASS)) die ('Nie udało się nawiązać połączenia z bazą danych!');

@@ -131,8 +131,8 @@ if ($walka == 0) /*Panel wyboru przeciwnika */
 					<td class="two">'.$i -> obrona.'</td>
 				  </tr>
 				  <tr>
-					<td class="one">---------------------------</td>
-					<td class="two"></td>
+					<td class="one">Wymagany poziom</td>
+					<td class="two">'.$i -> req_lvl.'</td>
 				  </tr>
 				  <tr>
 					<td class="one">Szansa na atak</td>
