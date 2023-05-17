@@ -1,70 +1,67 @@
-<!doctype html>
-<html lang="pl-PL">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<link rel="icon" href="images/favicon.ico">
-	<link href="styles/style.css" rel="stylesheet" type="text/css" />
-	<meta name="description" content="Wojownicy Myrtany darmowa gra online w świecie Gothica. W grze wcielasz się w wojownika, którego wyposażasz w różny ekwipunek. Poprzez treningi i walkę z przeciwnikami wspinaj się na sam szczyt!">
-	<meta name="author" content="GPC">
-	<title>Wojownicy Myrtany - Darmowa gra internetowa w świecie Gothica</title>
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png?v=2bbK9R8jpr" sizes="32x32">
+<link href='https://fonts.googleapis.com/css?family=Metamorphous&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<title>Wojownicy Myrtany - Darmowa gra internetowa w świecie Gothica</title>
 </head>
+
 <?php
-require_once('config/session.php');
-require_once('config/config.php');
+require_once('common/session.php');
+require_once('common/config.php');
+
+if (!$install) 
+{
+    header('Location: install/install.php');
+    exit;
+}
 ?>
+
 <body>
-	<div id="header">
-	<a draggable="false" href="index.php">
-		<img draggable="false" src="images/logo.png" style="margin-left: auto; margin-right: auto; left: 0; right: 0; top: -250px; position: absolute;">
+
+<div id="header">
+	<a href="index.php">
+		<img src="/images/WojMyrLOGO.png" style="margin-left: auto; margin-right: auto; left: 0; right: 0; top: -250px; position: absolute;">
 	</a>
-	</div>
-	<div style="top: 300px;" id="container">
-		<div id="content">
-			<div style="margin-top: -20px;" id="left">
-				<div class="menu">
-					<div class="menuheader"><h3>Logowanie</h3></div>
-					<div class="menucontent">
-						<div class="member">
-							<?php
-							if (isset($_SESSION['nick']) && isset($_SESSION['pass']))
-							{
-								echo '<ul>
-								<li><a style="text-decoration: none;" href="summary.php">Graj</a></li><br/ >
-								<li><a style="text-decoration: none;" href="index.php?signout">Wyloguj</a></li>
-								</ul><br />';
-							} else
-							{
-							?>
-							<div class="signin">
-								<form style="margin-bottom: 40px;" action="index.php?signin" name="signin" method="post">
-									<input class="formul" style="width: 136px; margin-top: 5px; margin-bottom: 10px;" type="text" placeholder="Login" name="nick" />
-									<input class="formul" style="width: 136px; margin-top: 5px; margin-bottom: 15px;" type="password" placeholder="Hasło" name="pass" />
-									<input class="gothbutton" style="margin: 0 auto;" type="submit" value="Zaloguj" name="signin">
-								</form>
-								<form action="reg.php">
-									<input type="submit" class="gothbutton" value="Zarejestruj się!" style="color: gold; font-size: 13px; font-style: italic; margin: 0 auto; margin-bottom: 7px;">
-								</form>
-							</div>
-							<?php
-							}
-							?>
-						</div>
-						<div class="clear"></div>
+</div>
+
+<div id="container">
+	<div id="content">
+		<div style="margin-top: -20px;" id="left">
+			<div class="menu">
+				<div class="menuheader"><h3>Logowanie</h3></div>
+			    <div class="menucontent">
+					<div class="member">
+					     <?php
+                        if (isset($_SESSION['login']) && isset($_SESSION['pass']))
+                        {
+                            echo '<div style="margin-left: 10px; margin-bottom: 6px;"><a href="postac.php"><input type="submit" class="gothbutton" value="Graj"></a><br><a href="index.php?wyloguj=ok"><input type="submit" class="gothbutton" value="Wyloguj"></a></div>';
+                        }
+						else
+						{
+						?>
+						<form action="index.php?loguj" name="logowanie" method="post" style="margin-left: -20px;">
+						<center>
+                        <p style="font-family: Metamorphous;">Twój login:<input class="formul" style="width: 130px;margin-top: 5px;" type="text" name="login"></p>
+						<p style="font-family: Metamorphous;">Twoje hasło:<input class="formul" style="width: 130px;margin-top: 5px;" type="password" name="haslo"></p>
+					    <p><input class="gothbutton" type="submit" value="Zaloguj" name="loguj"><br></p>
+						</form>
+						<form action="rejestracja.php">
+						<p><input type="submit" class="gothbutton" value="Zarejestruj się!" style="color: red;"></p>
+						</form>
+                        </center>
+						<?php
+						}
+						?>
 					</div>
-					<div class="menufooter"></div>
-				</div>
-				<?php require_once('config/linki.php'); ?>
+     				<div class="clear"></div>
+			    </div>
+				<div class="menufooter"></div>
 			</div>
-			<div id="middle">
-			<?php
-			function error_div($text)
-			{
-			echo "<div class='postheader'><h1>ERROR</h1></div>
-			<div class='postcontent'>
-				<p>".$text."</p>
-				</div>
-				<div class='postfooter'></div>
-			</div>";
-			exit;
-			}
-			?>
+			<?php require_once('includes/linki.php'); ?>
+	    </div>
+        <div id="middle">
